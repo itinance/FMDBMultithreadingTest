@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		43219EA43110349A84AC0EC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC330FD2BBFE22B465BA85CE /* libPods.a */; };
+		CDC3B0951B25C5AA00D645F0 /* SectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC3B0941B25C5AA00D645F0 /* SectionItem.m */; };
+		CDC3B0981B25C61300D645F0 /* RowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC3B0971B25C61300D645F0 /* RowItem.m */; };
+		CDC3B09E1B25CE1500D645F0 /* DatabaseSectionInserter.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC3B09D1B25CE1500D645F0 /* DatabaseSectionInserter.m */; };
+		CDC3B0A11B25D13200D645F0 /* DatabaseSectionTruncater.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC3B0A01B25D13200D645F0 /* DatabaseSectionTruncater.m */; };
 		CDD6DE841B25BFE000A659E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DE831B25BFE000A659E3 /* main.m */; };
 		CDD6DE871B25BFE000A659E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DE861B25BFE000A659E3 /* AppDelegate.m */; };
 		CDD6DE8A1B25BFE000A659E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD6DE891B25BFE000A659E3 /* ViewController.m */; };
@@ -33,6 +37,14 @@
 		242EE41FC70D2FDA585927A0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5B441749594E43E4B7CCC564 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AC330FD2BBFE22B465BA85CE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDC3B0931B25C5AA00D645F0 /* SectionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionItem.h; path = FMDBMultiThreadingExample/SectionItem.h; sourceTree = "<group>"; };
+		CDC3B0941B25C5AA00D645F0 /* SectionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionItem.m; path = FMDBMultiThreadingExample/SectionItem.m; sourceTree = "<group>"; };
+		CDC3B0961B25C61300D645F0 /* RowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RowItem.h; path = FMDBMultiThreadingExample/RowItem.h; sourceTree = "<group>"; };
+		CDC3B0971B25C61300D645F0 /* RowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RowItem.m; path = FMDBMultiThreadingExample/RowItem.m; sourceTree = "<group>"; };
+		CDC3B09C1B25CE1500D645F0 /* DatabaseSectionInserter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseSectionInserter.h; sourceTree = "<group>"; };
+		CDC3B09D1B25CE1500D645F0 /* DatabaseSectionInserter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseSectionInserter.m; sourceTree = "<group>"; };
+		CDC3B09F1B25D13200D645F0 /* DatabaseSectionTruncater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseSectionTruncater.h; sourceTree = "<group>"; };
+		CDC3B0A01B25D13200D645F0 /* DatabaseSectionTruncater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseSectionTruncater.m; sourceTree = "<group>"; };
 		CDD6DE7E1B25BFE000A659E3 /* FMDBMultiThreadingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMDBMultiThreadingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD6DE821B25BFE000A659E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDD6DE831B25BFE000A659E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,8 +58,8 @@
 		CDD6DE971B25BFE000A659E3 /* FMDBMultiThreadingExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FMDBMultiThreadingExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD6DE9C1B25BFE000A659E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDD6DE9D1B25BFE000A659E3 /* FMDBMultiThreadingExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDBMultiThreadingExampleTests.m; sourceTree = "<group>"; };
-		CDD6DEA71B25C0C600A659E3 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
-		CDD6DEA81B25C0C600A659E3 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
+		CDD6DEA71B25C0C600A659E3 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = FMDBMultiThreadingExample/Database.h; sourceTree = "<group>"; };
+		CDD6DEA81B25C0C600A659E3 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = FMDBMultiThreadingExample/Database.m; sourceTree = "<group>"; };
 		CDD6DEAA1B25C1A800A659E3 /* schema.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = schema.sql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +99,40 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CDC3B0991B25C67900D645F0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CDD6DEA71B25C0C600A659E3 /* Database.h */,
+				CDD6DEA81B25C0C600A659E3 /* Database.m */,
+				CDC3B0931B25C5AA00D645F0 /* SectionItem.h */,
+				CDC3B0941B25C5AA00D645F0 /* SectionItem.m */,
+				CDC3B0961B25C61300D645F0 /* RowItem.h */,
+				CDC3B0971B25C61300D645F0 /* RowItem.m */,
+			);
+			name = Data;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		CDC3B09A1B25C6AB00D645F0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CDD6DE881B25BFE000A659E3 /* ViewController.h */,
+				CDD6DE891B25BFE000A659E3 /* ViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CDC3B09B1B25CE0800D645F0 /* Processing */ = {
+			isa = PBXGroup;
+			children = (
+				CDC3B09C1B25CE1500D645F0 /* DatabaseSectionInserter.h */,
+				CDC3B09D1B25CE1500D645F0 /* DatabaseSectionInserter.m */,
+				CDC3B09F1B25D13200D645F0 /* DatabaseSectionTruncater.h */,
+				CDC3B0A01B25D13200D645F0 /* DatabaseSectionTruncater.m */,
+			);
+			name = Processing;
+			sourceTree = "<group>";
+		};
 		CDD6DE751B25BFE000A659E3 = {
 			isa = PBXGroup;
 			children = (
@@ -110,12 +156,11 @@
 		CDD6DE801B25BFE000A659E3 /* FMDBMultiThreadingExample */ = {
 			isa = PBXGroup;
 			children = (
-				CDD6DEA71B25C0C600A659E3 /* Database.h */,
-				CDD6DEA81B25C0C600A659E3 /* Database.m */,
+				CDC3B09B1B25CE0800D645F0 /* Processing */,
+				CDC3B09A1B25C6AB00D645F0 /* ViewControllers */,
+				CDC3B0991B25C67900D645F0 /* Data */,
 				CDD6DE851B25BFE000A659E3 /* AppDelegate.h */,
 				CDD6DE861B25BFE000A659E3 /* AppDelegate.m */,
-				CDD6DE881B25BFE000A659E3 /* ViewController.h */,
-				CDD6DE891B25BFE000A659E3 /* ViewController.m */,
 				CDD6DE8B1B25BFE000A659E3 /* Main.storyboard */,
 				CDD6DE8E1B25BFE000A659E3 /* Images.xcassets */,
 				CDD6DE901B25BFE000A659E3 /* LaunchScreen.xib */,
@@ -287,10 +332,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDC3B0951B25C5AA00D645F0 /* SectionItem.m in Sources */,
 				CDD6DE8A1B25BFE000A659E3 /* ViewController.m in Sources */,
+				CDC3B09E1B25CE1500D645F0 /* DatabaseSectionInserter.m in Sources */,
 				CDD6DE871B25BFE000A659E3 /* AppDelegate.m in Sources */,
 				CDD6DEA91B25C0C600A659E3 /* Database.m in Sources */,
 				CDD6DE841B25BFE000A659E3 /* main.m in Sources */,
+				CDC3B0981B25C61300D645F0 /* RowItem.m in Sources */,
+				CDC3B0A11B25D13200D645F0 /* DatabaseSectionTruncater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

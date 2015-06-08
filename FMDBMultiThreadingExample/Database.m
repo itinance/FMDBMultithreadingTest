@@ -40,7 +40,7 @@
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docsDir = [dirPaths objectAtIndex:0];
     
-    baseName = @"multithreading.sqlite";
+    baseName = @"multithreadtest.sqlite";
     return [docsDir stringByAppendingPathComponent: baseName];
 }
 
@@ -53,7 +53,7 @@
     NSLog(@"Is SQLite compiled with it's thread safe options turned on? %@!", [FMDatabase isSQLiteThreadSafe] ? @"Yes" : @"No");
     
     [_fmDatabaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *rs = [db executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name='version';"];
+        FMResultSet *rs = [db executeQuery:@"SELECT name FROM sqlite_master WHERE type='table' AND name='section';"];
         
         bool exists = rs != nil ? [rs next] : false;
         [rs close];
@@ -107,6 +107,15 @@
     return sharedDatabase;
 }
 
+- (NSDictionary*) loadDictionaryFromQuery:(NSString*)query withArgs:(NSArray*)args {
+
+    __block NSDictionary* result = nil;
+    [_fmDatabaseQueue inDatabase:^(FMDatabase *db) {
+        result = [self loadDictionaryFromQuery:query withArgs:args fromDatabase:db];
+    }];
+    return result;
+}
+
 - (NSDictionary*) loadDictionaryFromQuery:(NSString*)query withArgs:(NSArray*)args fromDatabase:(FMDatabase*)db {
     NSDictionary* result = nil;
     FMResultSet* rs = [db executeQuery:query withArgumentsInArray: args];
@@ -121,6 +130,88 @@
     }
     [rs close];
     return result;
+}
+
+- (int) getIntColumnFromQuery:(NSString*)query forColumn:(NSString*) columnName withArgs:(NSArray*)args fromDatabase:(FMDatabase*)db {
+    int result = 0;
+    FMResultSet* rs = [db executeQuery:query withArgumentsInArray: args];
+    
+    if(rs == nil) {
+        NSLog(@"Database Error: %@", [db lastErrorMessage]);
+        return result;
+    }
+    
+    if ([rs next]) {
+        result = [rs intForColumn:columnName];
+    }
+    [rs close];
+    return result;
+}
+
+- (NSArray*) loadAllSections {
+    
+    __block NSMutableArray* result = [NSMutableArray new];
+    
+    [_fmDatabaseQueue inDatabase:^(FMDatabase *db) {
+        
+        FMResultSet *rs = [db executeQuery:@"SELECT *, (SELECT COUNT(*) FROM rows WHERE rows.section_id=section.id) AS count_rows FROM section"];
+        
+        while([rs next]) {
+            
+            SectionItem* section = [[SectionItem alloc] init];
+            section._id = [rs intForColumn:@"id"];
+            section.name = [rs stringForColumn:@"name"];
+            section.dummy = [rs stringForColumn:@"dummy"];
+            section.created = [rs stringForColumn:@"created"];
+            section.updated = [rs stringForColumn:@"updated"];
+            
+            [result addObject:section];
+        }
+        
+        [rs close];
+        
+    }];
+    
+    return result;
+}
+
+
+- (bool) addSection:(NSString*)name withDummy:(NSString*)dummy {
+    __block bool success = false;
+    [_fmDatabaseQueue inDatabase:^(FMDatabase *db) {
+        
+        NSString* query = @"INSERT INTO section (name, dummy) VALUES (?, ?)";
+        
+        success = [db executeUpdate:query withArgumentsInArray:@[name, dummy]];
+        if(!success) {
+            NSLog(@"Database::addSection: %@", db.lastErrorMessage);
+        }
+        
+//        int countSections = [self getIntColumnFromQuery:@"SELECT insert_section_count FROM stats LIMIT 1" forColumn:@"insert_section_count" withArgs:nil fromDatabase:db];
+       
+//        countSections++;
+        
+        query = @"UPDATE stats SET insert_section_count=insert_section_count + 1, last_insert_section=CURRENT_TIMESTAMP WHERE id=1";
+        success = [db executeUpdate:query];
+        if(!success) {
+            NSLog(@"Database::update stats: %@", db.lastErrorMessage);
+        }
+        
+    }];
+    return success;
+}
+
+- (bool) executeStatement:(NSString*) statement {
+    __block bool success = false;
+    [_fmDatabaseQueue inDatabase:^(FMDatabase *db) {
+        
+        success = [db executeUpdate:statement];
+        if(!success) {
+            NSLog(@"Database::executeStatement: %@", db.lastErrorMessage);
+        }
+    }];
+    return success;
+    
 }
 
 @end

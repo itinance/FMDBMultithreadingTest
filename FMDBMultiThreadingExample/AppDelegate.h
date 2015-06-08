@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-
 @end
+
+dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, dispatch_block_t block);
 

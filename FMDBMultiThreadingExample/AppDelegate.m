@@ -7,16 +7,43 @@
 //
 
 #import "AppDelegate.h"
+#import "DatabaseSectionInserter.h"
+#import "DatabaseSectionTruncater.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () {
+    DatabaseSectionInserter* inserter;
+    DatabaseSectionInserter* inserter2;
+    DatabaseSectionTruncater* truncater;
+    DatabaseSectionTruncater* truncater2;
+}
+
 
 @end
 
 @implementation AppDelegate
 
+dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, dispatch_block_t block)
+{
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    if (timer)
+    {
+        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_SEC), interval * NSEC_PER_SEC, (1ull * NSEC_PER_SEC) / 10);
+        dispatch_source_set_event_handler(timer, block);
+        dispatch_resume(timer);
+    }
+    return timer;
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    inserter = [[DatabaseSectionInserter alloc] initWithInterval:0.0300f];
+    truncater = [[DatabaseSectionTruncater alloc] initWithInterval:.300f];
+
+    inserter2 = [[DatabaseSectionInserter alloc] initWithInterval:0.700f];
+    truncater2 = [[DatabaseSectionTruncater alloc] initWithInterval:0.783f];
+    
     return YES;
 }
 
